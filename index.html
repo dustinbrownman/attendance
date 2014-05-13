@@ -13,10 +13,10 @@
     {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" id="new_attendance">
+  <script type="text/x-handlebars" id="sign-in">
     <form>
       {{input type='text' value=name id='student-name'}}
-      <button {{action createAttendance}}>Sign-In</button>
+      <button {{action createAttendance}}>Sign in</button>
     </form>
     {{#link-to 'attendances'}}View all attendances{{/link-to}}
 
@@ -39,6 +39,7 @@
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/jquery-ui.js"></script>
   <script src="js/libs/moment.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.5.1.js"></script>
