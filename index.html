@@ -18,6 +18,7 @@
       {{ input type='text' id='student-name' }}
       <button {{action createAttendence}}>Sign-In</button>
     </form>
+    {{#link-to 'attendences'}}View all attendences{{/link-to}}
   </script>
 
   <script type="text/x-handlebars" id="attendences">
