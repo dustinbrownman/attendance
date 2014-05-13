@@ -15,10 +15,16 @@
 
   <script type="text/x-handlebars" id="new_attendance">
     <form>
-      {{ input type='text' value=name id='student-name' }}
+      {{input type='text' value=name id='student-name'}}
       <button {{action createAttendance}}>Sign-In</button>
     </form>
     {{#link-to 'attendances'}}View all attendances{{/link-to}}
+
+    <ul>
+      {{#each filteredStudents}}
+        <li>{{this.name}}</li>
+      {{/each}}
+    </ul>
   </script>
 
   <script type="text/x-handlebars" id="attendances">
@@ -26,6 +32,10 @@
       {{formattedTime}} - {{student.name}}
       <hr>
     {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" id="students">
+
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
