@@ -22,8 +22,7 @@
 
   <script type="text/x-handlebars" id="attendences">
     {{#each}}
-      <h3>{{time}}</h3>
-      <h4>{{student.name}}</h4>
+      {{formattedTime}} - {{student.name}}
       <hr>
     {{/each}}
   </script>

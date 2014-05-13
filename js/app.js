@@ -15,14 +15,11 @@ App.NewAttendenceController = Ember.ObjectController.extend({
   actions: {
     createAttendence: function() {
       var studentName = this.get('name');
-      if (!title.trim()) { return; }
-
       this.store.find('student', { name: studentName })
       .then(function(fullfilledPromise) {
-        debugger;
         var student = fullfilledPromise.get('firstObject');
         var attendence = fullfilledPromise.store.createRecord('attendence', {
-          time: Date.now(),
+          time: moment(),
           student: student
         });
         attendence.save();
@@ -39,8 +36,11 @@ App.Student = DS.Model.extend({
 App.Attendence = DS.Model.extend({
   student: DS.belongsTo('student', { async: true }),
   time: DS.attr('string'),
-  day: DS.belongsTo('day', { async: true })
-})
+  day: DS.belongsTo('day', { async: true }),
+  formattedTime: function() {
+    return moment(this.get('time')).format('LL');
+  }.property('time')
+});
 
 App.Day = DS.Model.extend({
   name: DS.attr('string'),
@@ -86,8 +86,8 @@ App.Student.FIXTURES = [
 App.Attendence.FIXTURES = [
   {
     id: 1,
-    time: '00000000000',
-    student: null
+    time: moment(),
+    student: 1
   }
 ]
 
