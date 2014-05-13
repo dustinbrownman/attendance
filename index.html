@@ -8,20 +8,20 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-    <h2>Attendence</h2>
+    <h2>Attendance</h2>
 
     {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" id="new_attendence">
+  <script type="text/x-handlebars" id="new_attendance">
     <form>
-      {{ input type='text' id='student-name' }}
-      <button {{action createAttendence}}>Sign-In</button>
+      {{ input type='text' value=name id='student-name' }}
+      <button {{action createAttendance}}>Sign-In</button>
     </form>
-    {{#link-to 'attendences'}}View all attendences{{/link-to}}
+    {{#link-to 'attendances'}}View all attendances{{/link-to}}
   </script>
 
-  <script type="text/x-handlebars" id="attendences">
+  <script type="text/x-handlebars" id="attendances">
     {{#each}}
       {{formattedTime}} - {{student.name}}
       <hr>

@@ -1,28 +1,30 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  this.route('new_attendence', { path: '/' });
-  this.resource('attendences');
+  this.route('new_attendance', { path: '/' });
+  this.resource('attendances');
 });
 
-App.AttendencesRoute = Ember.Route.extend({
+App.AttendancesRoute = Ember.Route.extend({
   model: function() {
-    return this.store.find('attendence');
+    return this.store.find('attendance');
   }
 })
 
-App.NewAttendenceController = Ember.ObjectController.extend({
+App.NewAttendanceController = Ember.ObjectController.extend({
+  content: {},
   actions: {
-    createAttendence: function() {
+    createAttendance: function() {
       var studentName = this.get('name');
+      alert(studentName);
       this.store.find('student', { name: studentName })
       .then(function(fullfilledPromise) {
         var student = fullfilledPromise.get('firstObject');
-        var attendence = fullfilledPromise.store.createRecord('attendence', {
+        var attendance = fullfilledPromise.store.createRecord('attendance', {
           time: moment(),
           student: student
         });
-        attendence.save();
+        attendance.save();
       });
     }
   }
@@ -30,10 +32,10 @@ App.NewAttendenceController = Ember.ObjectController.extend({
 
 App.Student = DS.Model.extend({
   name: DS.attr('string'),
-  attendences: DS.hasMany('attendence', { async: true })
+  attendances: DS.hasMany('attendance', { async: true })
 });
 
-App.Attendence = DS.Model.extend({
+App.Attendance = DS.Model.extend({
   student: DS.belongsTo('student', { async: true }),
   time: DS.attr('string'),
   day: DS.belongsTo('day', { async: true }),
@@ -44,7 +46,7 @@ App.Attendence = DS.Model.extend({
 
 App.Day = DS.Model.extend({
   name: DS.attr('string'),
-  attendences: DS.hasMany('attendence', { async: true })
+  attendances: DS.hasMany('attendance', { async: true })
 })
 
 App.ApplicationAdapter = DS.FixtureAdapter.extend({
@@ -83,7 +85,7 @@ App.Student.FIXTURES = [
   }
 ]
 
-App.Attendence.FIXTURES = [
+App.Attendance.FIXTURES = [
   {
     id: 1,
     time: moment(),
