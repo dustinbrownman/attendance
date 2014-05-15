@@ -3,28 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>Ember Starter Kit</title>
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <script type="text/x-handlebars">
-    <h2>Attendance</h2>
+    <div class="container">
+      <h2>Attendance</h2>
 
-    {{outlet}}
+      {{outlet}}
+    </div>
   </script>
 
   <script type="text/x-handlebars" id="sign-in">
     <form>
       {{input type='text' value=name id='student-name'}}
-      <button {{action createAttendance}}>Sign in</button>
+      <button class="btn btn-success" {{action createAttendance}}>Sign in</button>
     </form>
-    {{#link-to 'attendances'}}View all attendances{{/link-to}}
 
-    <ul>
-      {{#each filteredStudents}}
-        <li>{{this.name}}</li>
-      {{/each}}
-    </ul>
+    {{view App.dropDown contentBinding="filteredStudents"}}
+    {{#link-to 'attendances'}}View all attendances{{/link-to}}
   </script>
 
   <script type="text/x-handlebars" id="attendances">
