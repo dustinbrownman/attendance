@@ -26,4 +26,4 @@ Day.FIXTURES = [
   }
 ];
 
-default export Day;
+export default Day;

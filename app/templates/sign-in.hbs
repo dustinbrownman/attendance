@@ -3,5 +3,5 @@
   <button class="btn btn-success" {{action createAttendance}}>Sign in</button>
 </form>
 
-{{view App.dropDown contentBinding="filteredStudents"}}
+{{view 'drop-down' contentBinding="filteredStudents"}}
 {{#link-to 'attendances'}}View all attendances{{/link-to}}
