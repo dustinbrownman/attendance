@@ -4,3 +4,41 @@
 html, body {
     margin: 20px;
 }
+
+.tt-query, .tt-hint {
+  @extend .form-control;
+}
+
+.tt-hint {
+  color: #bdc3c7;
+}
+
+.tt-dropdown-menu {
+  width: 100%;
+  padding-top: 5px;
+  background-color: white;
+  -webkit-box-shadow: 0 2px 2px #999;
+     -moz-box-shadow: 0 2px 2px #999;
+          box-shadow: 0 2px 2px #999;
+
+  .tt-suggestion {
+    padding: 5px 10px;
+  }
+
+  .tt-is-under-cursor {
+    color: white;
+    background-color: $brand-primary;
+  }
+}
+
+// .tt-suggestions {
+//   @extend .list-group;
+
+//   .tt-suggestion {
+//     @extend .list-group-item
+//   }
+
+//   .tt-is-under-cursor {
+//     @extend .active
+//   }
+// }

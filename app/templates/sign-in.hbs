@@ -1,7 +1,5 @@
 <form>
-  {{input type='text' value=name id='student-name'}}
+  {{view 'type-ahead' data=model.students name="name" selection=model.attendance.student}}
   <button class="btn btn-success" {{action createAttendance}}>Sign in</button>
 </form>
-
-{{view 'drop-down' contentBinding="filteredStudents"}}
 {{#link-to 'attendances'}}View all attendances{{/link-to}}

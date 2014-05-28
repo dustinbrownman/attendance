@@ -4,19 +4,16 @@ export default Ember.ObjectController.extend({
   },
   actions: {
     createAttendance: function() {
-      var studentName = this.get('name');
-      this.store.find('student', { name: studentName })
-      .then(function(fulfilledPromise) {
-        var student = fulfilledPromise.get('firstObject');
-        var attendance = fulfilledPromise.store.createRecord('attendance', {
-          time: moment(),
-          student: student
-        });
-        attendance.save();
+      var controller = this;
+      var attendance = this.get('model.attendance');
+      attendance.set('time', moment());
+      attendance.save().then(function() {
+        controller.transitionToRoute('attendances');
       });
     },
     select: function(student) {
       this.set('content.selected', student);
+      this.set('model.attendance.student', student);
     }
   },
   filteredStudents: function() {
