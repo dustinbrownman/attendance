@@ -31,14 +31,7 @@ html, body {
   }
 }
 
-// .tt-suggestions {
-//   @extend .list-group;
-
-//   .tt-suggestion {
-//     @extend .list-group-item
-//   }
-
-//   .tt-is-under-cursor {
-//     @extend .active
-//   }
-// }
+.flash {
+  @extend .alert;
+  @extend .alert-success;
+}
